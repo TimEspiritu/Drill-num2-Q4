@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 Drill 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #00474d;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid  #00474d;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background:  #00474d;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+       
+
+        .output {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ Electrical Consumption Calculator</h1>
+        
+        <input type="number" id="elcCon" placeholder="Input your Electric Consumption"> 
+        <button onclick="calculate()">COMPUTE YOUR ELECTRICAL CONSUMPTION</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script> 
+    function calculate() {
+        let ElecCon = parseFloat(document.getElementById("elcCon").value);
+   
+        
+        if (isNaN(ElecCon) || ElecCon < 1) {
+            document.getElementById("result").innerHTML = "<div class='output''>❌ Invalid Input!</div>";
+        } else if (ElecCon > 500) {
+            document.getElementById("result").innerHTML = "<div class='output'><strong>Electrical Consumption: " + ElecCon + "</strong><br><br>⚠️ Very High Consumption!</div>";
+        } else if (ElecCon >= 301) {
+            document.getElementById("result")   .innerHTML = "<div class='output'><strong>Electrical Consumption: " + ElecCon + "</strong><br><br>🔴 High Consumption!</div>";
+        } else if (ElecCon >= 201) {
+            document.getElementById("result").innerHTML = "<div class='output'><strong>Electrical Consumption: " + ElecCon + "</strong><br><br>🟡 Average Consumption!</div>";
+        } else if (ElecCon >= 101) {
+            document.getElementById("result").innerHTML = "<div class='output'><strong>Electrical Consumption: " + ElecCon + "</strong><br><br>🟢 Low Consumption!</div>";
+        } else if (ElecCon >= 1) {
+            document.getElementById("result").innerHTML = "<div class='output'><strong>Electrical Consumption: " + ElecCon + "</strong><br><br>✅ Lifeline Consumer!</div>";
+        }
+    }
+    </script>
+</body>
+</html>
